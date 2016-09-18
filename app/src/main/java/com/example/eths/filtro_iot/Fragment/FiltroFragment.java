@@ -10,19 +10,26 @@ import android.view.ViewGroup;
 
 import com.example.eths.filtro_iot.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link FiltroFragment.OnFiltroFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link FiltroFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class FiltroFragment extends Fragment {
 
 
-public class OpcoesFragment extends Fragment {
+    private OnFiltroFragmentInteractionListener mListener;
 
-    private OnOpcoesFragmentInteractionListener mListener;
-
-    public OpcoesFragment() {
+    public FiltroFragment() {
         // Required empty public constructor
     }
 
-
-    public static OpcoesFragment newInstance() {
-        OpcoesFragment fragment = new OpcoesFragment();
+    // TODO: Rename and change types and number of parameters
+    public static FiltroFragment newInstance() {
+        FiltroFragment fragment = new FiltroFragment();
         return fragment;
     }
 
@@ -35,21 +42,21 @@ public class OpcoesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_filtro, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onOpcoesFragmentInteraction(uri);
+            mListener.onFiltroFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnOpcoesFragmentInteractionListener) {
-            mListener = (OnOpcoesFragmentInteractionListener) context;
+        if (context instanceof OnFiltroFragmentInteractionListener) {
+            mListener = (OnFiltroFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -72,8 +79,8 @@ public class OpcoesFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnOpcoesFragmentInteractionListener {
+    public interface OnFiltroFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onOpcoesFragmentInteraction(Uri uri);
+        void onFiltroFragmentInteraction(Uri uri);
     }
 }

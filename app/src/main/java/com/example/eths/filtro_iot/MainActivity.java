@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.eths.filtro_iot.Fragment.FiltroFragment;
 import com.example.eths.filtro_iot.Fragment.OpcoesFragment;
 import com.example.eths.filtro_iot.R;
 import com.google.android.gms.appindexing.Action;
@@ -25,7 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OpcoesFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,OpcoesFragment.OnOpcoesFragmentInteractionListener, FiltroFragment.OnFiltroFragmentInteractionListener{
 
 
     private GoogleApiClient client;
@@ -90,10 +91,6 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
             return true;
         }
-        if (id == R.id.action_about) {
-
-            return true;
-        }
 
 
         return super.onOptionsItemSelected(item);
@@ -105,17 +102,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_filtro) {
+            Fragment f = FiltroFragment.newInstance();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.your_placeholder, f);
+            ft.commit();
+        } else if (id == R.id.nav_historico) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_sobre) {
 
         }
 
@@ -165,7 +159,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onOpcoesFragmentInteraction(Uri uri) {
+
+    }
+    @Override
+    public void onFiltroFragmentInteraction(Uri uri) {
 
     }
 }
