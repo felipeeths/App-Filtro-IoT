@@ -54,6 +54,7 @@ public class FiltroAdapter extends ArrayAdapter<Dispositivo> {
     String serverUri = "tcp://iot.eclipse.org:1883";
     String clientId = "ExampleAndroidClient";
     String publishTopic = "filipecavalcanteenvia";
+    String subscriptionTopic = "filipecalvalvanterecebe";
 
     static class ViewHolder {
         private TextView textViewNameDispositivo;
@@ -168,4 +169,24 @@ public class FiltroAdapter extends ArrayAdapter<Dispositivo> {
            e.printStackTrace();
        }
    }
+
+    public void subscribeToTopic(){
+        try {
+            mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    //addToHistory("Subscribed!");
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    //addToHistory("Failed to subscribe");
+                }
+            });
+
+        } catch (MqttException ex){
+            System.err.println("Exception whilst subscribing");
+            ex.printStackTrace();
+        }
+    }
 }
